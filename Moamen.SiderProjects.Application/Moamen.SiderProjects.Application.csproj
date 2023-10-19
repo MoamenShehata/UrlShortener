@@ -18,4 +18,10 @@
     <ProjectReference Include="..\Moamen.SiderProjects.Domain\Moamen.SiderProjects.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="CSharp.Utilities.ControlFlow">
+      <HintPath>..\..\..\..\..\08-My SDKs\CSharp.Utilities\CSharp.Utilities.ControlFlow\bin\Debug\net6.0\CSharp.Utilities.ControlFlow.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

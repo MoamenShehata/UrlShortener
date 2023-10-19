@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CSharp.Utilities.ControlFlow.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Moamen.SiderProjects.Application.Features.Urls.DTOs;
@@ -13,26 +14,30 @@ namespace Moamen.SiderProjects.Application.Features.Urls.Commands
 	{
 		private readonly IUrlsDbContext _urlsDbContext;
 		private readonly IMapper _mapper;
+		private readonly IControlFlow _controlFlow;
 
 		public UpsertUrlCommandHandler(IUrlsDbContext urlsDbContext,
-			IMapper mapper)
+			IMapper mapper,
+			IControlFlow controlFlow)
 		{
 			_urlsDbContext = urlsDbContext;
 			_mapper = mapper;
+			_controlFlow = controlFlow;
 		}
 
 		public async Task<UrlDto> Handle(UpsertUrlCommand request, CancellationToken cancellationToken)
 		{
 			var urlByHash = await GetUrlByHashedUrlAsync(request.OriginalUrlHash, cancellationToken);
 
-			if (urlByHash != null)
-			{
-				return _mapper.Map<UrlDto>(urlByHash);
-			}
+			UrlDto result = null;
 
-			var urlToCreate = await SaveUrlToDatabaseAsync(request, cancellationToken);
+			await _controlFlow
+					.If(urlByHash != null)
+					.WhenTrue(() => result = _mapper.Map<UrlDto>(urlByHash))
+					.WhenFalse(async () => result = await SaveUrlToDatabaseAsync(request, cancellationToken))
+					.StartAsync();
 
-			return _mapper.Map<UrlDto>(urlToCreate);
+			return result;
 		}
 
 		private async Task<Url> GetUrlByHashedUrlAsync(string hashedOriginalUrl, CancellationToken cancellationToken)
@@ -41,13 +46,13 @@ namespace Moamen.SiderProjects.Application.Features.Urls.Commands
 				.FirstOrDefaultAsync(url => url.OriginalUrlHashed == hashedOriginalUrl, cancellationToken);
 		}
 
-		private async Task<Url> SaveUrlToDatabaseAsync(UpsertUrlCommand request, CancellationToken cancellationToken)
+		private async Task<UrlDto> SaveUrlToDatabaseAsync(UpsertUrlCommand request, CancellationToken cancellationToken)
 		{
 			var urlToCreate = _mapper.Map<Url>(request);
 			_urlsDbContext.Urls.Add(urlToCreate);
 			await _urlsDbContext.SaveChangesAsync(cancellationToken);
 
-			return urlToCreate;
+			return _mapper.Map<UrlDto>(urlToCreate);
 		}
 	}
 }

@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using CSharp.Utilities.ControlFlow.Implementations;
+using CSharp.Utilities.ControlFlow.Interfaces;
 using Moamen.SiderProjects.Application.Features.Urls.Commands;
 using Moamen.SiderProjects.Application.Features.Urls.DTOs;
 using Moamen.SiderProjects.Application.Features.Urls.Services;
@@ -37,7 +39,7 @@ namespace Moamen.SiderProjects.Application.Tests.Features.Urls.Commands
 				ShortUrl = existingUrl.ShortUrl
 			});
 
-			var handler = new UpsertUrlCommandHandler(dbContextMock.Object, mapperMock.Object);
+			var handler = new UpsertUrlCommandHandler(dbContextMock.Object, mapperMock.Object, new DefaultControlFlow());
 
 			//act
 			var response = await handler.Handle(request, CancellationToken.None);
@@ -64,7 +66,7 @@ namespace Moamen.SiderProjects.Application.Tests.Features.Urls.Commands
 				.Setup(c => c.SaveChangesAsync(It.IsAny<CancellationToken>()))
 				.ReturnsAsync(1);
 
-		var mapperMock = new Mock<IMapper>();
+			var mapperMock = new Mock<IMapper>();
 			mapperMock.Setup(m => m.Map<Url>(request))
 				.Returns(new Url
 				{
@@ -79,7 +81,7 @@ namespace Moamen.SiderProjects.Application.Tests.Features.Urls.Commands
 					ShortUrl = request.ShortUrl
 				});
 
-			var handler = new UpsertUrlCommandHandler(dbContextMock.Object, mapperMock.Object);
+			var handler = new UpsertUrlCommandHandler(dbContextMock.Object, mapperMock.Object, new DefaultControlFlow());
 
 			//act
 			var response = await handler.Handle(request, CancellationToken.None);
