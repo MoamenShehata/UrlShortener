@@ -41,7 +41,7 @@ public class UrlShortener : IUrlShortener
 		{
 			Hash = originalUrlHash.AsBase64String,
 			IsUserDefined = false,
-			ShortUrl = $"{_hostProvider.HostBaseUrl}/{originalUrlHash}"
+			ShortUrl = $"{_hostProvider.HostBaseUrl}/{originalUrlHash.AsBase64String}"
 		};
 	}
 

@@ -14,26 +14,22 @@ public class UrlShortenerTests
 	{
 		// arrange
 		var urlToHash = "https://www.google.com";
-		var hashedValue = "hashed";
-
-		var hashServiceMoq = new Mock<IHashingService>();
-		hashServiceMoq
-			.Setup(s =>
-				s.Hash(urlToHash))
-			.Returns(new HashedValue(Encoding.UTF8.GetBytes(hashedValue)));
+		var hashService = new SHA1HashingAlgorithm(new UTF8Encoder());
+		var hashedValue = hashService.Hash(urlToHash).AsBase64String;
 
 		var hostProviderMock = new Mock<IHostProvider>();
 		hostProviderMock.Setup(h => h.HostBaseUrl)
 			.Returns("http://localhost/mUrl");
 
-		var shortener = new UrlShortener(new DefaultControlFlow(), hashServiceMoq.Object, hostProviderMock.Object);
+		var shortener = new UrlShortener(new DefaultControlFlow(), hashService, hostProviderMock.Object);
 
 		// act
 		var shortUrl = await shortener.ShortenAsync(urlToHash);
 
 		//assert
 		Assert.False(shortUrl.IsUserDefined);
-		Assert.Equal(Convert.ToBase64String(Encoding.UTF8.GetBytes(hashedValue)), shortUrl.Hash);
+		Assert.Equal(hashedValue, shortUrl.Hash);
+		Assert.Contains(hashedValue, shortUrl.ShortUrl);
 	}
 
 	[Fact]
@@ -61,6 +57,7 @@ public class UrlShortenerTests
 		//assert
 		Assert.True(shortUrl.IsUserDefined);
 		Assert.Equal(Convert.ToBase64String(Encoding.UTF8.GetBytes(userPath)), shortUrl.Hash);
+		Assert.Contains(userPath, shortUrl.ShortUrl);
 	}
 
 
