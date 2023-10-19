@@ -53,7 +53,10 @@ namespace Moamen.SiderProjects.Application.Tests.Features.Urls.Commands
 			urlShortenerMoq
 				.Setup(s =>
 					s.ShortenAsync(It.IsAny<string>(), It.IsAny<string>()))
-				.Throws<GeneratedShortUrlNullException>();
+				.ReturnsAsync(new ShortUrlDto
+				{
+
+				});
 
 			var mediatorMoq = new Mock<IMediator>();
 			mediatorMoq.Setup(m => m.Send(It.IsAny<UpsertUrlCommand>(), CancellationToken.None))
