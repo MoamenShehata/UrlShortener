@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using Moamen.SiderProjects.Application.Features.Urls.DTOs;
 using Moamen.SiderProjects.Application.Features.Urls.Services;
 
@@ -9,19 +8,13 @@ namespace Moamen.SiderProjects.Application.Features.Urls.Commands
 
 	public class GenerateShortenedUrlCommandHandler : IRequestHandler<GenerateShortenedUrlCommand, UrlDto>
 	{
-		private readonly IMapper _mapper;
 		private readonly IUrlShortener _urlShortener;
-		private readonly IUrlsDbContext _urlsDbContext;
 		private readonly IMediator _mediator;
 
-		public GenerateShortenedUrlCommandHandler(IMapper mapper,
-			IUrlShortener urlShortener,
-			IUrlsDbContext urlsDbContext,
+		public GenerateShortenedUrlCommandHandler(IUrlShortener urlShortener,
 			IMediator mediator)
 		{
-			_mapper = mapper;
 			_urlShortener = urlShortener;
-			_urlsDbContext = urlsDbContext;
 			_mediator = mediator;
 		}
 
