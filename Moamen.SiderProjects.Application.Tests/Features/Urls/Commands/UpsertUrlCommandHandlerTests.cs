@@ -44,6 +44,7 @@ namespace Moamen.SiderProjects.Application.Tests.Features.Urls.Commands
 
 			//assert
 			Assert.NotNull(response);
+			Assert.Equal(response.ShortUrl, request.ShortUrl);
 			dbContextMock
 				.Verify(d => d.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Never);
 		}
