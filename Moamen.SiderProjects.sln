@@ -5,6 +5,12 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moamen.SiderProjects.UrlSHortener", "Moamen.SiderProjects.UrlSHortener\Moamen.SiderProjects.UrlSHortener.csproj", "{4CD22BD3-FC70-450D-9B46-56DCCAF7EC2A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moamen.SiderProjects.Application", "Moamen.SiderProjects.Application\Moamen.SiderProjects.Application.csproj", "{3E3701E7-D8C5-4F0A-9455-533C74F137D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moamen.SiderProjects.Domain", "Moamen.SiderProjects.Domain\Moamen.SiderProjects.Domain.csproj", "{F05EF3A1-605F-40C7-A285-CFE1546103F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moamen.SiderProjects.Application.Tests", "Moamen.SiderProjects.Application.Tests\Moamen.SiderProjects.Application.Tests.csproj", "{DED98AEA-BE54-4381-9B9A-6C76DD80A18A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{4CD22BD3-FC70-450D-9B46-56DCCAF7EC2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CD22BD3-FC70-450D-9B46-56DCCAF7EC2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CD22BD3-FC70-450D-9B46-56DCCAF7EC2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E3701E7-D8C5-4F0A-9455-533C74F137D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E3701E7-D8C5-4F0A-9455-533C74F137D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E3701E7-D8C5-4F0A-9455-533C74F137D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E3701E7-D8C5-4F0A-9455-533C74F137D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F05EF3A1-605F-40C7-A285-CFE1546103F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F05EF3A1-605F-40C7-A285-CFE1546103F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F05EF3A1-605F-40C7-A285-CFE1546103F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F05EF3A1-605F-40C7-A285-CFE1546103F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DED98AEA-BE54-4381-9B9A-6C76DD80A18A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DED98AEA-BE54-4381-9B9A-6C76DD80A18A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DED98AEA-BE54-4381-9B9A-6C76DD80A18A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DED98AEA-BE54-4381-9B9A-6C76DD80A18A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
