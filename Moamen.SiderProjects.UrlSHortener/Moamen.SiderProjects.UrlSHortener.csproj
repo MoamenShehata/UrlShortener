@@ -6,4 +6,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Moamen.SideProjects.Infrastructure\Moamen.SideProjects.Infrastructure.csproj" />
+    <ProjectReference Include="..\Moamen.SiderProjects.Application\Moamen.SiderProjects.Application.csproj" />
+  </ItemGroup>
+
 </Project>

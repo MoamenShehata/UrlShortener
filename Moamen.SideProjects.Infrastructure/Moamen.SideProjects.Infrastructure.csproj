@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Moamen.SiderProjects.Application\Moamen.SiderProjects.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="CSharp.Utilities.ControlFlow">
+      <HintPath>..\..\..\..\..\08-My SDKs\CSharp.Utilities\CSharp.Utilities.ControlFlow\bin\Debug\net6.0\CSharp.Utilities.ControlFlow.dll</HintPath>
+    </Reference>
+    <Reference Include="Moamen.SDKs.Cryptography">
+      <HintPath>..\..\..\..\..\Moamen.SDKs\SDKs\Moamen.SDKs.Cryptography\bin\Debug\Moamen.SDKs.Cryptography.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

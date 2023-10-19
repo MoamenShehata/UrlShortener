@@ -1,7 +1,13 @@
+using Moamen.SideProjects.Infrastructure.DependencyRegistration;
+using Moamen.SiderProjects.Application.DependencyRegistration;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services
+	.AddApplicationDependencies()
+	.AddInfrastructureDependencies();
 
 var app = builder.Build();
 

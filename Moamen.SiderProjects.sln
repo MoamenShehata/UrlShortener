@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moamen.SiderProjects.Domain
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moamen.SiderProjects.Application.Tests", "Moamen.SiderProjects.Application.Tests\Moamen.SiderProjects.Application.Tests.csproj", "{DED98AEA-BE54-4381-9B9A-6C76DD80A18A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moamen.SideProjects.Infrastructure", "Moamen.SideProjects.Infrastructure\Moamen.SideProjects.Infrastructure.csproj", "{3775F341-591D-455B-A5A8-CFEC47EA0E84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moamen.SideProjects.Infrastructure.Tests", "Moamen.SideProjects.Infrastructure.Tests\Moamen.SideProjects.Infrastructure.Tests.csproj", "{B0BBF255-51CB-4D3D-AB09-3FFF18D0BE05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{DED98AEA-BE54-4381-9B9A-6C76DD80A18A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DED98AEA-BE54-4381-9B9A-6C76DD80A18A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DED98AEA-BE54-4381-9B9A-6C76DD80A18A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3775F341-591D-455B-A5A8-CFEC47EA0E84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3775F341-591D-455B-A5A8-CFEC47EA0E84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3775F341-591D-455B-A5A8-CFEC47EA0E84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3775F341-591D-455B-A5A8-CFEC47EA0E84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0BBF255-51CB-4D3D-AB09-3FFF18D0BE05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0BBF255-51CB-4D3D-AB09-3FFF18D0BE05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0BBF255-51CB-4D3D-AB09-3FFF18D0BE05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0BBF255-51CB-4D3D-AB09-3FFF18D0BE05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
