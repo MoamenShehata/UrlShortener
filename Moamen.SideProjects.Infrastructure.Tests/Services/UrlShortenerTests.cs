@@ -58,6 +58,7 @@ public class UrlShortenerTests
 		Assert.True(shortUrl.IsUserDefined);
 		Assert.Equal(Convert.ToBase64String(Encoding.UTF8.GetBytes(userPath)), shortUrl.Hash);
 		Assert.Contains(userPath, shortUrl.ShortUrl);
+		Assert.Equal(userPath.Length, shortUrl.ShortUrl.Substring(shortUrl.ShortUrl.LastIndexOf("/") + 1).Length);
 	}
 
 
