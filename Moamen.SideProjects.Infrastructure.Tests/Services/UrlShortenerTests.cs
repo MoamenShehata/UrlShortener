@@ -30,6 +30,8 @@ public class UrlShortenerTests
 		Assert.False(shortUrl.IsUserDefined);
 		Assert.Equal(hashedValue, shortUrl.Hash);
 		Assert.Contains(hashedValue, shortUrl.ShortUrl);
+		var hashLength = 6;
+		Assert.Equal(hashLength, shortUrl.Hash.Length);
 	}
 
 	[Fact]
