@@ -35,4 +35,33 @@ public class UrlShortenerTests
 		Assert.False(shortUrl.IsUserDefined);
 		Assert.Equal(Convert.ToBase64String(Encoding.UTF8.GetBytes(hashedValue)), shortUrl.Hash);
 	}
+
+	[Fact]
+	public async Task Should_Shorten_Based_On_User_Defined_Path_When_Specified()
+	{
+		// arrange
+		var urlToHash = "https://www.google.com";
+		var userPath = "aywa-path";
+
+		var hashServiceMoq = new Mock<IHashingService>();
+		hashServiceMoq
+			.Setup(s =>
+				s.Hash(userPath))
+			.Returns(new HashedValue(Encoding.UTF8.GetBytes(userPath)));
+
+		var hostProviderMock = new Mock<IHostProvider>();
+		hostProviderMock.Setup(h => h.HostBaseUrl)
+			.Returns("http://localhost/mUrl");
+
+		var shortener = new UrlShortener(new DefaultControlFlow(), hashServiceMoq.Object, hostProviderMock.Object);
+
+		// act
+		var shortUrl = await shortener.ShortenAsync(urlToHash, userPath);
+
+		//assert
+		Assert.True(shortUrl.IsUserDefined);
+		Assert.Equal(Convert.ToBase64String(Encoding.UTF8.GetBytes(userPath)), shortUrl.Hash);
+	}
+
+
 }
