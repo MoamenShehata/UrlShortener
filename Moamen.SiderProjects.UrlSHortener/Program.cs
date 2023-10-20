@@ -1,5 +1,6 @@
 using Moamen.SideProjects.Infrastructure.DependencyRegistration;
 using Moamen.SiderProjects.Application.DependencyRegistration;
+using Moamen.SiderProjects.Persistence.DependencyRegistration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services
 	.AddApplicationDependencies()
-	.AddInfrastructureDependencies();
+	.AddInfrastructureDependencies()
+	.AddPersistenceDependencies(builder.Configuration);
 
 var app = builder.Build();
 

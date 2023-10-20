@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moamen.SiderProjects.UrlSHortener", "Moamen.SiderProjects.UrlSHortener\Moamen.SiderProjects.UrlSHortener.csproj", "{4CD22BD3-FC70-450D-9B46-56DCCAF7EC2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moamen.SiderProjects.UrlSHortener", "Moamen.SiderProjects.UrlSHortener\Moamen.SiderProjects.UrlSHortener.csproj", "{4CD22BD3-FC70-450D-9B46-56DCCAF7EC2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moamen.SiderProjects.Application", "Moamen.SiderProjects.Application\Moamen.SiderProjects.Application.csproj", "{3E3701E7-D8C5-4F0A-9455-533C74F137D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moamen.SiderProjects.Application", "Moamen.SiderProjects.Application\Moamen.SiderProjects.Application.csproj", "{3E3701E7-D8C5-4F0A-9455-533C74F137D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moamen.SiderProjects.Domain", "Moamen.SiderProjects.Domain\Moamen.SiderProjects.Domain.csproj", "{F05EF3A1-605F-40C7-A285-CFE1546103F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moamen.SiderProjects.Domain", "Moamen.SiderProjects.Domain\Moamen.SiderProjects.Domain.csproj", "{F05EF3A1-605F-40C7-A285-CFE1546103F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moamen.SiderProjects.Application.Tests", "Moamen.SiderProjects.Application.Tests\Moamen.SiderProjects.Application.Tests.csproj", "{DED98AEA-BE54-4381-9B9A-6C76DD80A18A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moamen.SiderProjects.Application.Tests", "Moamen.SiderProjects.Application.Tests\Moamen.SiderProjects.Application.Tests.csproj", "{DED98AEA-BE54-4381-9B9A-6C76DD80A18A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moamen.SideProjects.Infrastructure", "Moamen.SideProjects.Infrastructure\Moamen.SideProjects.Infrastructure.csproj", "{3775F341-591D-455B-A5A8-CFEC47EA0E84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moamen.SideProjects.Infrastructure", "Moamen.SideProjects.Infrastructure\Moamen.SideProjects.Infrastructure.csproj", "{3775F341-591D-455B-A5A8-CFEC47EA0E84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moamen.SideProjects.Infrastructure.Tests", "Moamen.SideProjects.Infrastructure.Tests\Moamen.SideProjects.Infrastructure.Tests.csproj", "{B0BBF255-51CB-4D3D-AB09-3FFF18D0BE05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moamen.SideProjects.Infrastructure.Tests", "Moamen.SideProjects.Infrastructure.Tests\Moamen.SideProjects.Infrastructure.Tests.csproj", "{B0BBF255-51CB-4D3D-AB09-3FFF18D0BE05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moamen.SiderProjects.Persistence", "Moamen.SiderProjects.Persistence\Moamen.SiderProjects.Persistence.csproj", "{EBC13D60-73A9-4FCB-A20A-1B036EDA5F7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{B0BBF255-51CB-4D3D-AB09-3FFF18D0BE05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0BBF255-51CB-4D3D-AB09-3FFF18D0BE05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0BBF255-51CB-4D3D-AB09-3FFF18D0BE05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBC13D60-73A9-4FCB-A20A-1B036EDA5F7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBC13D60-73A9-4FCB-A20A-1B036EDA5F7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBC13D60-73A9-4FCB-A20A-1B036EDA5F7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBC13D60-73A9-4FCB-A20A-1B036EDA5F7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
