@@ -43,7 +43,7 @@ namespace Moamen.SiderProjects.Application.Features.Urls.Commands
 		private async Task<Url> GetUrlByHashedUrlAsync(string hashedOriginalUrl, CancellationToken cancellationToken)
 		{
 			return await _urlsDbContext.Urls
-				.FirstOrDefaultAsync(url => url.OriginalUrlHashed == hashedOriginalUrl, cancellationToken);
+				.FirstOrDefaultAsync(url => url.Hash == hashedOriginalUrl, cancellationToken);
 		}
 
 		private async Task<UrlDto> SaveUrlToDatabaseAsync(UpsertUrlCommand request, CancellationToken cancellationToken)

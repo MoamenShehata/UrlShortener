@@ -21,7 +21,7 @@ namespace Moamen.SiderProjects.Application.Tests.Features.Urls.Commands
 
 			var existingUrl = new Url()
 			{
-				OriginalUrlHashed = request.OriginalUrlHash,
+				Hash = request.OriginalUrlHash,
 				ShortUrl = request.ShortUrl,
 				OriginalUrl = request.OriginalUrl
 			};
@@ -72,7 +72,7 @@ namespace Moamen.SiderProjects.Application.Tests.Features.Urls.Commands
 				{
 					ShortUrl = request.ShortUrl,
 					OriginalUrl = request.OriginalUrl,
-					OriginalUrlHashed = request.OriginalUrlHash
+					Hash = request.OriginalUrlHash
 				});
 
 			mapperMock.Setup(m => m.Map<UrlDto>(It.IsAny<Url>()))

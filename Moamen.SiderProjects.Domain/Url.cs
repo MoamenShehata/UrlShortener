@@ -4,6 +4,6 @@
 	{
 		public string OriginalUrl { get; set; }
 		public string ShortUrl { get; set; }
-		public string OriginalUrlHashed { get; set; }
+		public string Hash { get; set; }
 	}
 }
