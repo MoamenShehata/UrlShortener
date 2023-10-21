@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Moamen.SiderProjects.Persistence.DbContexts;
 
@@ -10,9 +11,11 @@ using Moamen.SiderProjects.Persistence.DbContexts;
 namespace Moamen.SiderProjects.Persistence.Migrations
 {
     [DbContext(typeof(UrlDbContext))]
-    partial class UrlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231021080413_Add_Urls_OriginalUrlHash")]
+    partial class Add_Urls_OriginalUrlHash
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
