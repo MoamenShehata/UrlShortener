@@ -13,6 +13,10 @@ namespace Moamen.SiderProjects.Application.DependencyRegistration
 				config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
 			});
 
+			services.AddAutoMapper(config =>
+			{
+			}, Assembly.GetExecutingAssembly(), Assembly.GetCallingAssembly());
+
 			services.AddCSharpControlFlow();
 
 			return services;

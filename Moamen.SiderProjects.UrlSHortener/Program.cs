@@ -1,6 +1,8 @@
 using Moamen.SideProjects.Infrastructure.DependencyRegistration;
 using Moamen.SiderProjects.Application.DependencyRegistration;
+using Moamen.SiderProjects.Application.Features.Urls.Services;
 using Moamen.SiderProjects.Persistence.DependencyRegistration;
+using Moamen.SiderProjects.UrlSHortener.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,8 +10,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services
 	.AddApplicationDependencies()
-	.AddInfrastructureDependencies()
+	.AddInfrastructureDependencies(builder.Configuration)
 	.AddPersistenceDependencies(builder.Configuration);
+
+builder.Services.AddSingleton<IHostProvider, WebHostProvider>();
 
 var app = builder.Build();
 
