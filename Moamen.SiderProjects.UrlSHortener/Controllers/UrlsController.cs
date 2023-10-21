@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Moamen.SiderProjects.Application.Features.Urls.Commands;
+using Moamen.SiderProjects.Application.Features.Urls.Queries;
 using Moamen.SiderProjects.UrlSHortener.Models;
 
 namespace Moamen.SiderProjects.UrlSHortener.Controllers
@@ -23,6 +24,14 @@ namespace Moamen.SiderProjects.UrlSHortener.Controllers
 			var shortUrlDto = await Mediator.Send(new GenerateShortenedUrlCommand(shortenPostDto.LongUrl, shortenPostDto.FavoritePath));
 
 			return View("Result", shortUrlDto);
+		}
+
+		[HttpGet("{query}")]
+		public async Task<IActionResult> Url([FromRoute] string query)
+		{
+			var originalUrl = await Mediator.Send(new GetOriginalUrlQuery(query));
+
+			return Redirect(originalUrl);
 		}
 	}
 }

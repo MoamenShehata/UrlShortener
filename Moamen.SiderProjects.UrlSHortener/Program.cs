@@ -14,6 +14,7 @@ builder.Services
 	.AddPersistenceDependencies(builder.Configuration);
 
 builder.Services.AddSingleton<IHostProvider, WebHostProvider>();
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 

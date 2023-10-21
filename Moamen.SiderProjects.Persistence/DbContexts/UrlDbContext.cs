@@ -7,7 +7,7 @@ namespace Moamen.SiderProjects.Persistence.DbContexts
 {
 	public class UrlDbContext : DbContext, IUrlsDbContext
 	{
-		public DbSet<Url> Urls { get; }
+		public DbSet<Url> Urls { get; set; }
 
 		public UrlDbContext(DbContextOptions<UrlDbContext> options)
 			: base(options)

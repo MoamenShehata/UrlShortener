@@ -1,6 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using CSharp.Utilities.ControlFlow.Extensions;
+using Microsoft.Extensions.DependencyInjection;
+using Moamen.SiderProjects.Application.Features.Urls.Services;
 using System.Reflection;
-using CSharp.Utilities.ControlFlow.Extensions;
 
 namespace Moamen.SiderProjects.Application.DependencyRegistration
 {
@@ -18,6 +19,9 @@ namespace Moamen.SiderProjects.Application.DependencyRegistration
 			}, Assembly.GetExecutingAssembly(), Assembly.GetCallingAssembly());
 
 			services.AddCSharpControlFlow();
+
+			services
+				.AddScoped<IUrlService, UrlService>();
 
 			return services;
 		}

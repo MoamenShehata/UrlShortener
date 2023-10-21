@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using CSharp.Utilities.ControlFlow.Interfaces;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Moamen.SiderProjects.Application.Features.Urls.DTOs;
 using Moamen.SiderProjects.Application.Features.Urls.Services;
 using Moamen.SiderProjects.Domain;
@@ -15,19 +14,22 @@ namespace Moamen.SiderProjects.Application.Features.Urls.Commands
 		private readonly IUrlsDbContext _urlsDbContext;
 		private readonly IMapper _mapper;
 		private readonly IControlFlow _controlFlow;
+		private readonly IUrlService _urlService;
 
 		public UpsertUrlCommandHandler(IUrlsDbContext urlsDbContext,
 			IMapper mapper,
-			IControlFlow controlFlow)
+			IControlFlow controlFlow,
+			IUrlService urlService)
 		{
 			_urlsDbContext = urlsDbContext;
 			_mapper = mapper;
 			_controlFlow = controlFlow;
+			_urlService = urlService;
 		}
 
 		public async Task<UrlDto> Handle(UpsertUrlCommand request, CancellationToken cancellationToken)
 		{
-			var urlByHash = await GetUrlByHashAsync(request.Hash, cancellationToken);
+			var urlByHash = await _urlService.GetByHashAsync(request.Hash);
 
 			UrlDto result = null;
 
@@ -38,12 +40,6 @@ namespace Moamen.SiderProjects.Application.Features.Urls.Commands
 					.StartAsync();
 
 			return result;
-		}
-
-		private async Task<Url> GetUrlByHashAsync(string hash, CancellationToken cancellationToken)
-		{
-			return await _urlsDbContext.Urls
-				.FirstOrDefaultAsync(url => url.Hash == hash, cancellationToken);
 		}
 
 		private async Task<UrlDto> SaveUrlToDatabaseAsync(UpsertUrlCommand request, CancellationToken cancellationToken)
