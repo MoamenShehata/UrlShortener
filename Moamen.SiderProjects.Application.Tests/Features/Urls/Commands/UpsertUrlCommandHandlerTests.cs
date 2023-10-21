@@ -60,9 +60,18 @@ namespace Moamen.SiderProjects.Application.Tests.Features.Urls.Commands
 			dbContextMock.Setup(x => x.Urls)
 				.ReturnsDbSet(new List<Url>());
 
+			var affectedRow = -1;
+
 			dbContextMock
 				.Setup(c => c.SaveChangesAsync(It.IsAny<CancellationToken>()))
-				.ReturnsAsync(1);
+				.Returns(async () => await Task.Run(async () =>
+				{
+					await Task.Delay(10);
+
+					affectedRow = 1;
+
+					return affectedRow;
+				}));
 
 			var mapperMock = new Mock<IMapper>();
 			mapperMock.Setup(m => m.Map<Url>(request))
@@ -92,6 +101,7 @@ namespace Moamen.SiderProjects.Application.Tests.Features.Urls.Commands
 
 			//assert
 			Assert.NotNull(response);
+			Assert.Equal(1, affectedRow);
 			Assert.Equal(response.ShortUrl, request.ShortUrl);
 			dbContextMock
 				.Verify(d => d.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Once);

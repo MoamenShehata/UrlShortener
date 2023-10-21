@@ -36,7 +36,7 @@ namespace Moamen.SiderProjects.Application.Features.Urls.Commands
 			await _controlFlow
 					.If(urlByHash != null)
 					.WhenTrue(() => result = _mapper.Map<UrlDto>(urlByHash))
-					.WhenFalse(async () => result = await SaveUrlToDatabaseAsync(request, cancellationToken))
+					.WhenFalseAsync(async () => result = await SaveUrlToDatabaseAsync(request, cancellationToken))
 					.StartAsync();
 
 			return result;
