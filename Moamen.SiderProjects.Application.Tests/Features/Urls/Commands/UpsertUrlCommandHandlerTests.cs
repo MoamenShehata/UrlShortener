@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using CSharp.Utilities.ControlFlow.Implementations;
-using CSharp.Utilities.ControlFlow.Interfaces;
 using Moamen.SiderProjects.Application.Features.Urls.Commands;
 using Moamen.SiderProjects.Application.Features.Urls.DTOs;
 using Moamen.SiderProjects.Application.Features.Urls.Services;
@@ -26,12 +25,11 @@ namespace Moamen.SiderProjects.Application.Tests.Features.Urls.Commands
 				OriginalUrl = request.OriginalUrl
 			};
 
-			var dbContextMock = new Mock<IUrlsDbContext>();
-			dbContextMock.Setup(x => x.Urls)
-				.ReturnsDbSet(new List<Url>()
-				{
-					existingUrl
-				});
+			var dbContextMoq = new Mock<IUrlsDbContext>();
+
+			var urlServiceMoq = new Mock<IUrlService>();
+			urlServiceMoq.Setup(x => x.GetByHashAsync(It.IsAny<string>()))
+				.ReturnsAsync(existingUrl);
 
 			var mapperMock = new Mock<IMapper>();
 			mapperMock.Setup(m => m.Map<UrlDto>(existingUrl)).Returns(new UrlDto
@@ -39,7 +37,7 @@ namespace Moamen.SiderProjects.Application.Tests.Features.Urls.Commands
 				ShortUrl = existingUrl.ShortUrl
 			});
 
-			var handler = new UpsertUrlCommandHandler(dbContextMock.Object, mapperMock.Object, new DefaultControlFlow());
+			var handler = new UpsertUrlCommandHandler(dbContextMoq.Object, mapperMock.Object, new DefaultControlFlow(), urlServiceMoq.Object);
 
 			//act
 			var response = await handler.Handle(request, CancellationToken.None);
@@ -47,7 +45,7 @@ namespace Moamen.SiderProjects.Application.Tests.Features.Urls.Commands
 			//assert
 			Assert.NotNull(response);
 			Assert.Equal(response.ShortUrl, request.ShortUrl);
-			dbContextMock
+			dbContextMoq
 				.Verify(d => d.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Never);
 		}
 
@@ -81,7 +79,13 @@ namespace Moamen.SiderProjects.Application.Tests.Features.Urls.Commands
 					ShortUrl = request.ShortUrl
 				});
 
-			var handler = new UpsertUrlCommandHandler(dbContextMock.Object, mapperMock.Object, new DefaultControlFlow());
+			Url existingUrl = null;
+
+			var urlServiceMoq = new Mock<IUrlService>();
+			urlServiceMoq.Setup(x => x.GetByHashAsync(It.IsAny<string>()))
+				.ReturnsAsync(existingUrl);
+
+			var handler = new UpsertUrlCommandHandler(dbContextMock.Object, mapperMock.Object, new DefaultControlFlow(), urlServiceMoq.Object);
 
 			//act
 			var response = await handler.Handle(request, CancellationToken.None);

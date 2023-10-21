@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using CSharp.Utilities.ControlFlow.Implementations;
+using MediatR;
 using Moamen.SiderProjects.Application.Exceptions;
 using Moamen.SiderProjects.Application.Features.Urls.Commands;
 using Moamen.SiderProjects.Application.Features.Urls.DTOs;
@@ -21,15 +22,18 @@ namespace Moamen.SiderProjects.Application.Tests.Features.Urls.Commands
 					s.ShortenAsync(It.IsAny<string>(), It.IsAny<string>()))
 				.ReturnsAsync(new ShortUrlDto
 				{
-
+					ShortUrl = "url"
 				});
 
 			var mediatorMoq = new Mock<IMediator>();
 			mediatorMoq.Setup(m => m.Send(It.IsAny<UpsertUrlCommand>(), CancellationToken.None))
-				.ReturnsAsync(new UrlDto());
+				.ReturnsAsync(new UrlDto()
+				{
+					ShortUrl = "url"
+				});
 
 			//act
-			var handler = new GenerateShortenedUrlCommandHandler(urlShortenerMoq.Object, mediatorMoq.Object);
+			var handler = new GenerateShortenedUrlCommandHandler(urlShortenerMoq.Object, mediatorMoq.Object, new DefaultControlFlow());
 			var upsertedUrlRecord = await handler.Handle(request, CancellationToken.None);
 
 			//assert
@@ -63,7 +67,7 @@ namespace Moamen.SiderProjects.Application.Tests.Features.Urls.Commands
 				.ReturnsAsync(new UrlDto());
 
 			//act
-			var handler = new GenerateShortenedUrlCommandHandler(urlShortenerMoq.Object, mediatorMoq.Object);
+			var handler = new GenerateShortenedUrlCommandHandler(urlShortenerMoq.Object, mediatorMoq.Object, new DefaultControlFlow());
 
 			//assert
 			await Assert.ThrowsAsync<GeneratedShortUrlNullException>(async () => await handler.Handle(request, CancellationToken.None));
