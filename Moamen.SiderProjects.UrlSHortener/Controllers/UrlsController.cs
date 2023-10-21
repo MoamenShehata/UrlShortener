@@ -27,7 +27,7 @@ namespace Moamen.SiderProjects.UrlSHortener.Controllers
 		}
 
 		[HttpGet("{query}")]
-		public async Task<IActionResult> Url([FromRoute] string query)
+		public async Task<IActionResult> Urls([FromRoute] string query)
 		{
 			var originalUrl = await Mediator.Send(new GetOriginalUrlQuery(query));
 
