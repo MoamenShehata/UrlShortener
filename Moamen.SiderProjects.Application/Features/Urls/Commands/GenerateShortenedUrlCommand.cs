@@ -27,7 +27,13 @@ namespace Moamen.SiderProjects.Application.Features.Urls.Commands
 		{
 			var shortenedDto = await _urlShortener.ShortenAsync(request.OriginalUrl, request.FavoritePath);
 
-			var createdUrlDto = await _mediator.Send(new UpsertUrlCommand(shortenedDto.ShortUrl, request.OriginalUrl, shortenedDto.Hash), cancellationToken);
+			var createdUrlDto = await _mediator
+				.Send(
+					new UpsertUrlCommand(shortenedDto.ShortUrl,
+						request.OriginalUrl,
+						shortenedDto.Hash,
+						shortenedDto.OriginalUrlHash),
+					cancellationToken);
 
 			await _controlFlow
 					.If(createdUrlDto == null || createdUrlDto.ShortUrl == null)

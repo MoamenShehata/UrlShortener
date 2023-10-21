@@ -30,6 +30,8 @@ public class UrlShortener : IUrlShortener
 				.WhenFalseAsync(async () => result = await ShortenUrlBasedOnUserDefinedPath(favoritePath))
 				.StartAsync();
 
+		result.OriginalUrlHash= _hashService.Hash(originalUrl).AsBase64String;
+
 		return result;
 	}
 
