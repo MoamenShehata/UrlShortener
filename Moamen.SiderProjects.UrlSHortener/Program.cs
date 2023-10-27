@@ -1,7 +1,20 @@
+using Moamen.SideProjects.Infrastructure.DependencyRegistration;
+using Moamen.SiderProjects.Application.DependencyRegistration;
+using Moamen.SiderProjects.Application.Features.Urls.Services;
+using Moamen.SiderProjects.Persistence.DependencyRegistration;
+using Moamen.SiderProjects.UrlSHortener.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services
+	.AddApplicationDependencies()
+	.AddInfrastructureDependencies(builder.Configuration)
+	.AddPersistenceDependencies(builder.Configuration);
+
+builder.Services.AddSingleton<IHostProvider, WebHostProvider>();
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
@@ -22,6 +35,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
 	name: "default",
-	pattern: "{controller=Home}/{action=Index}/{id?}");
+	pattern: "{controller=Urls}/{action=Index}/{id?}");
 
 app.Run();

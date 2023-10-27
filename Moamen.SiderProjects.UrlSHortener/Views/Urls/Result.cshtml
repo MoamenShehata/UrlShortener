@@ -1,0 +1,11 @@
+﻿@using Moamen.SiderProjects.Application.Features.Urls.DTOs;
+
+@model UrlDto
+@{
+    ViewData["Title"] = "URL Shortener";
+}
+
+<div>
+	<label asp-for="ShortUrl"></label>
+	<input asp-for="ShortUrl" class="form-control"/>
+</div>

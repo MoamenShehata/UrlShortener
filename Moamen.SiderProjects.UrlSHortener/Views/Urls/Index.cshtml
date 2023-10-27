@@ -1,0 +1,14 @@
+﻿@model UrlShortenPostDto
+@{
+    ViewData["Title"] = "URL Shortener";
+}
+
+<form asp-controller="Urls" asp-action="Index" method="post" class="form">
+	<label asp-for="LongUrl"></label>
+	<input asp-for="LongUrl" class="form-control"/>
+
+	<label asp-for="FavoritePath"></label>
+	<input asp-for="FavoritePath" class="form-control" />
+	
+	<button type="submit">Submit</button>
+</form>
